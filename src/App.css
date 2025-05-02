@@ -1,0 +1,118 @@
+/* Hintergrund & Grundlayout */
+html, body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #00C6FF, #0072FF);
+  height: 100%;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+
+/* Animations */
+@keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+
+/* Page Sections */
+.page {
+  padding: 2rem;
+  color: #333;
+  background: white;
+  margin: 1rem;
+  border-radius: 10px;
+  animation: fadeIn 1s ease;
+}
+.page h1 {
+  background: linear-gradient(135deg, #00C6FF, #0072FF);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+.text-image-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+.section-text { flex: 1; }
+.section-image { flex: 1; }
+.section-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+@media (max-width: 768px) {
+  .text-image-section { flex-direction: column; }
+}
+
+/* Kontaktformular */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: box-shadow 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 198, 255, 0.7);
+}
+.contact-form button {
+  background: linear-gradient(90deg, #00C6FF, #0072FF);
+  border: none;
+  padding: 0.75rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.contact-form button:hover {
+  background: linear-gradient(90deg, #00e6e6, #0072ff);
+}
+.success-message {
+  text-align: center;
+  color: #008000;
+  font-weight: bold;
+}
+
+/* ScrollToTop Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .feature-item {
+    padding: 1rem;
+  }
+
+  .feature-item img {
+    width: 50px;
+    height: 50px;
+  }
+}

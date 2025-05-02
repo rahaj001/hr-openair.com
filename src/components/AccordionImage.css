@@ -1,0 +1,85 @@
+/* Gesamtcontainer für Accordion */
+.accordion-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Container für das Bild */
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 500px;  /* Kann angepasst werden */
+    overflow: hidden;
+  }
+  
+  /* Bild im Hintergrund */
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Verhindert Verzerrung */
+    opacity: 0.6;  /* Bild wird abgedunkelt */
+  }
+  
+  /* Overlay für das Bild */
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);  /* Dunkle Überlagerung */
+    z-index: 1;
+  }
+  
+  /* Die Text-Sektion über dem Bild */
+  .content {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  /* Der Titel des Akkordeons */
+  .accordion-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Der Schaltflächen-Pfeil (Fleche) */
+  .accordion-icon {
+    cursor: pointer;
+    font-size: 2rem;
+    animation: bounce 1s infinite alternate;  /* Pfeil-Schwung */
+    transition: transform 0.3s ease;
+  }
+  
+  /* Pfeil hin und her schwingen */
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Wenn das Akkordeon geöffnet ist, dreht sich der Pfeil */
+  .accordion-icon.rotate {
+    transform: rotate(180deg);
+  }
+  
+  /* Inhalt des Akkordeons, der angezeigt wird */
+  .accordion-content {
+    background-color: rgba(0, 0, 0, 0.7);  /* Schwarzer Hintergrund für den Text */
+    padding: 20px;
+    margin-top: 20px;
+    transition: max-height 0.5s ease-out;
+    z-index: 3;
+  }
+  

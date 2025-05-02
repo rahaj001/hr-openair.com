@@ -1,0 +1,12 @@
+/* CallToAction.css */
+.cta-section {
+    background: linear-gradient(90deg,#0072FF,#00C6FF); padding: 3rem 1rem;
+    text-align: center; color: #fff;
+  }
+  .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+  .cta-section button {
+    background: #fff; color: #0072FF; border: none;
+    padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 5px;
+    cursor: pointer; transition: background 0.3s;
+  }
+  .cta-section button:hover { background: #f0f0f0; }

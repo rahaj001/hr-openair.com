@@ -1,0 +1,48 @@
+.features-section {
+    padding: 3rem 2rem;
+    background: #f9fafd;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    color: #0072ff;
+    margin-bottom: 2rem;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  
+  .feature-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 114, 255, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 114, 255, 0.2);
+  }
+  
+  .feature-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-item h3 {
+    font-size: 1.2rem;
+    color: #0072ff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature-item p {
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
