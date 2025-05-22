@@ -1,0 +1,45 @@
+.cypherbox-info-container {
+  width: 90%;
+
+  margin: 15rem auto 15rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.cypherbox-title {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+}
+
+.cypherbox-section {
+  margin-bottom: 2.5rem;
+}
+
+.cypherbox-section-header {
+  font-size: 1.5rem;
+  color: #0077cc;
+  margin-bottom: 1rem;
+}
+
+.cypherbox-section-text {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.head-title {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.head-title img {
+  width: 40px;
+  height: 40px;
+}

@@ -1,0 +1,43 @@
+/* HeroSection.css */
+.cypherbox-section {
+ 
+  position: relative;
+  padding: 25px 2px;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: 150px auto 25px auto;
+  
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(76,112,228,0.6);
+}
+.cypherbox-content {
+  position: relative;
+  text-align: center;
+  background-color: #f0f6ff;
+  color: #fff;
+  max-width: 95%;
+  padding: 0 1rem;
+  animation: fadeIn 1s ease;
+}
+
+.cypherbox-title { font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1f6feb; }
+
+.cypherbox-subtitle { font-size: 1.25rem; color: #050936; margin-bottom: 2rem; }
+.hero-cta {
+  background: linear-gradient(90deg,#00C6FF,#0072FF);
+  border: none; 
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem; color: #fff; border-radius: 5px;
+  cursor: pointer; transition: transform 0.3s;
+}
+.hero-cta:hover { transform: scale(1.05); }

@@ -1,0 +1,27 @@
+.legal-text {
+  position: sticky;
+  max-width: 800px;
+  margin: 250px auto 45px auto;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #f7f9fb, #e0f0ff);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+  line-height: 1.8;
+}
+
+.legal-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #1f6feb;
+}
+
+.legal-text p {
+  margin: 0.5rem 0;
+}
+
+html[lang="ar"] .legal-text {
+  direction: rtl;
+  text-align: right;
+}

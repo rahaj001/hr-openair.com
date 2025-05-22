@@ -1,0 +1,79 @@
+.main-content-container {
+  max-width: 95%;
+  margin: 0rem auto 5rem auto;
+  padding: 2rem 2rem 7rem 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.main-content-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 100%;
+  margin: 0 auto 1px auto;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.featuresection-container {
+  display: flex;
+  padding: 2rem;
+  width: 90%;
+  margin: 0 auto 5px auto;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.featuresection-section {
+     margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.feature-item {
+  flex: 0 1 250px;
+  background-color: #f0f6ff;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.featuresection-text {
+  margin: 0;
+  white-space: wrap;
+}
+
+.featuresection-title {
+  font-size: 2rem;
+  color: #0077cc;
+  margin-bottom: 1rem;
+}
+
+.featuresection-subtitle {
+  font-size: 1.6rem;
+  color: #0077cc;
+  margin-bottom: 1rem;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item h3 {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  color: #0072FF;
+}
+
+.feature-item p {
+  margin-top: 0.5rem;
+  color: #444;
+  font-size: 0.95rem;
+}

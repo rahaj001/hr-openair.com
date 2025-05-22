@@ -1,0 +1,58 @@
+.accordion-section {
+  margin: 1.5rem 0;
+  border-left: 4px solid #0072ff;
+  padding-left: 1rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  padding-right: 2rem;
+}
+
+.title-line {
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 1.2rem;
+  background-color: #0072ff;
+}
+
+.section-header h3 {
+   margin: 0;
+  white-space: nowrap;
+}
+
+.icon {
+  font-size: 1rem;
+  color: #0072ff;
+  transition: transform 0.3s ease;
+}
+
+.section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.section-content.open {
+  max-height: 25%;
+  opacity: 1;
+  margin-top: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+  gap: 1rem;
+  user-select: none;
+}
+
+.section-content-expand {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  animation: fadeIn 0.3s ease-in-out;
+}

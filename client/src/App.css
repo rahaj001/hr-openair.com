@@ -1,0 +1,240 @@
+/* Hintergrund & Grundlayout */
+html, body {
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #00e6e6, #C846B4, #C846B4);
+  height: auto;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-content: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 80%;
+  margin: 10rem auto 7rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.page-section-home {
+  width: 100%;
+  margin: auto;
+  padding: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+   z-index: 3;
+}
+
+/* Titel */
+.page h2, .section-title {
+  font-size: 2rem;
+  color: #1f6feb;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.page textarea {
+  width: auto;
+  height: auto;
+}
+
+
+
+/* Animations */
+@keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+.ad-banner {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f0f4f8;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  text-align: center;
+  min-height: 90px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.ad-banner p {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Werbebanner oben oder unten */
+.ad-banner {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  background-color: #fff3cd;
+  color: #856404;
+  font-weight: bold;
+  border-bottom: 1px solid #ffeeba;
+  z-index: 10;
+}
+
+.ad-top {
+  position: sticky;
+  top: 0;
+}
+
+.ad-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff3cd;
+  border-top: 1px solid #ffeeba;
+}
+
+/* Werbebanner innerhalb des Inhalts */
+.ad-content {
+  background-color: #e6f7ff;
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  text-align: center;
+  border: 1px solid #91d5ff;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+
+
+/* Hauptinhalt */
+
+
+/* Werbe-Sidebar */
+.ad-sidebar {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.ad-box {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #856404;
+  border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+
+.page h1 {
+  background: linear-gradient(135deg, #00C6FF, #0072FF);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.text-image-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+.section-text { flex: 1; }
+.section-image { flex: 1; }
+.section-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+@media (max-width: 768px) {
+  .text-image-section { flex-direction: column; }
+}
+
+/* Kontaktformular */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: box-shadow 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 198, 255, 0.7);
+}
+.contact-form button {
+  background: linear-gradient(90deg, #00C6FF, #0072FF);
+  border: none;
+  padding: 0.75rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.contact-form button:hover {
+  background: linear-gradient(90deg, #00e6e6, #0072ff);
+}
+.success-message {
+  text-align: center;
+  color: #008000;
+  font-weight: bold;
+}
+
+/* ScrollToTop Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .feature-item {
+    padding: 1rem;
+  }
+
+  .feature-item img {
+    width: 50px;
+    height: 50px;
+  }
+  
+}

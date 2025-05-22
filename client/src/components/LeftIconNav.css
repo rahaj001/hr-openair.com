@@ -1,0 +1,33 @@
+/* Linke Icon-Navigation */
+.left-icon-nav {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.left-icon-nav.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.left-logo {
+  margin-bottom: 100px;border-radius: 50%;
+
+}
+
+.left-logo-img.left-logo-animated {
+    width: 35px;
+    height: 35px;
+    animation: float 3s ease-in-out infinite;
+  }
+  .icon-nav {
+ width: 35px;
+    height: 35px;
+  }

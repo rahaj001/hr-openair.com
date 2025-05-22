@@ -1,0 +1,35 @@
+.language-switcher {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .lang-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+  }
+  
+  .lang-button.active,
+  .lang-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  .flag-icon {
+    width: 24px;
+    height: 16px;
+    display: block;
+  }
+  
+  .flag-wrapper {
+    display: inline-block;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  

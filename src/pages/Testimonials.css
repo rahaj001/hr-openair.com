@@ -1,7 +1,0 @@
-/* Testimonials.css */
-.testimonials {
-    background: #f9f9f9; padding: 4rem 1rem; text-align: center;
-    border-radius: 10px; margin: 2rem 0;
-  }
-  .quote { font-size: 1.5rem; margin-bottom: 1rem; color: #333; animation: fadeIn 1s ease; }
-  .author { font-size: 1rem; color: #777; }

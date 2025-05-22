@@ -1,0 +1,24 @@
+.footer {
+  width: 100%;
+    
+    text-align: center;
+    font-size: 0.9rem;
+    margin: 5px auto 0px auto;
+  }
+  
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .footer-nav a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,5 +1,5 @@
 {
-  "name": "openairsite",
+  "name": "client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,14 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "axios": "^1.9.0",
-    "framer-motion": "^12.9.2",
+    "framer-motion": "^12.9.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
-    "react-router-dom": "^7.5.2"
+    "react-router-dom": "^7.5.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
@@ -29,18 +28,5 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "vite": "^6.3.1"
-  },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
-  "main": "eslint.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rahaj001/hr-openair.com.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rahaj001/hr-openair.com/issues"
-  },
-  "homepage": "https://github.com/rahaj001/hr-openair.com#readme"
+  }
 }

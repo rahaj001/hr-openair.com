@@ -1,0 +1,35 @@
+/* Testimonials.css */
+
+.main-wrapper-welcome {
+  position: relative;
+  display: flex;
+  height: auto;
+   min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  z-index: 5;
+}
+.testimonials-welcome{
+   position: relative;
+   width: 500px;
+    min-width: 400px;
+    max-width: 95%;
+    height: 120px;
+    color: white;
+    text-align: center;
+     display: flex;
+  align-items: center;
+  justify-content: center;
+      border-radius: 10px; margin: 15px auto 15px auto;
+      background-size: cover;
+  background-position: center;
+        z-index: 2;
+     
+    }
+    .text { font-size: 2rem; margin-bottom: 1rem; color: #fff; animation: fadeIn 1s ease; }
+    

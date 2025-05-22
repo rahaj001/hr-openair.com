@@ -1,0 +1,21 @@
+.ad-banner {
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    margin: 10px 0;
+    border: 1px dashed #ccc;
+  }
+  
+  .ad-banner.top {
+    margin-top: 0;
+  }
+  
+  .ad-banner.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  

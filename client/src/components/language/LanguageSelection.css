@@ -1,0 +1,23 @@
+.language-selection select {
+    padding: 6px 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .language-selection select:focus {
+    outline: none;
+    background-color: #555;
+  }
+
+    /* Responsive Design */
+  @media (max-width: 768px) {
+    .language-selection {
+     padding: 3.5px 6px;
+     font-size: 12px;
+  }
+  }
+  
