@@ -46,6 +46,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-right: 10px;
   }
 
   .main-nav.rtl {
@@ -53,11 +54,15 @@
   text-align: right;
 }
 
+
+
   .header.shrink {
     display: none;
    height: 20px;
     font-size: 0.5em;
   }
+
+  
 
   .header-top.hide {
      display: none;
@@ -149,6 +154,7 @@
 .burger {
   display: none;
   flex-direction: column;
+  margin-right: 2rem;
   gap: 5px;
   cursor: pointer;
 }
@@ -175,6 +181,10 @@
   gap: 1rem;
   padding: 1rem;
   color: #C846B4;
+}
+
+.main-nav.open {
+  display: flex;
 }
 
  .nav-link-sub {
@@ -234,6 +244,20 @@
     .burger {
       display: flex;
     }
+    
+
+ .main-nav {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px auto;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem 0rem;
+  color: #C846B4;
+  background-color: rgba(0, 0, 0, 0.4); /* Transparenter beim Öffnen */
+}
+    
     
     .site-header.open {
       display: flex;

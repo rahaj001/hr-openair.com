@@ -220,6 +220,7 @@ html, body {
   .burger {
     display: flex;
   }
+
   .features-grid {
     grid-template-columns: 1fr;
   }
