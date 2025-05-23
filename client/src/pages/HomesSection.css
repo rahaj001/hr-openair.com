@@ -1,7 +1,8 @@
 .homesection-info-container {
   max-width: 95%;
-  margin: 2rem auto 1rem auto;
-  padding: 2rem 2rem 7rem 2rem;
+ 
+     margin: 2.5rem auto;
+  padding: 2rem 0rem 7rem 0rem;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -16,17 +17,37 @@
 }
 
 .homesection-section {
-     margin-top: 2.5rem;
+
+     margin: 2.5rem auto;
   margin-bottom: 2.5rem;
 }
 
 .homesection-section-header {
+  margin-left: 5px;
   font-size: 2rem;
   color: #0077cc;
   margin-bottom: 1rem;
 }
 
 .homesection-section-text {
-  margin: 0;
+  margin-left: 15px;
   white-space: wrap;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+
+  .homesection-title {
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #333;
+}
+
+.homesection-section-header {
+  font-size: 1.5rem;
+  color: #0077cc;
+  margin-bottom: 1rem;
+}
+
 }

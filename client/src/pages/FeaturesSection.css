@@ -1,7 +1,9 @@
 .main-content-container {
+ 
   max-width: 95%;
+
   margin: 0rem auto 5rem auto;
-  padding: 2rem 2rem 7rem 2rem;
+  padding: 2rem 0rem 7rem 0rem;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -13,7 +15,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
+ 
   max-width: 100%;
   margin: 0 auto 1px auto;
   background-color: #fff;
@@ -22,7 +24,7 @@
 
 .featuresection-container {
   display: flex;
-  padding: 2rem;
+ 
   width: 90%;
   margin: 0 auto 5px auto;
   background-color: #fff;
@@ -76,4 +78,20 @@
   margin-top: 0.5rem;
   color: #444;
   font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+
+  .featuresection-title {
+  font-size: 1.7rem;
+  color: #0077cc;
+  margin-bottom: 1rem;
+}
+
+.featuresection-subtitle {
+  font-size: 1.4rem;
+  color: #0077cc;
+  margin-bottom: 1rem;
+}
+
 }

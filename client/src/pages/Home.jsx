@@ -67,8 +67,7 @@ const scrollToSection = (id) => {
            <FeaturesSection  lang={lang}/>   
         </section>
 
-        <section className="page">
-           {/* Optional oben */}
+         {/* Optional oben   <section className="page">  </section> */}
            {adsEnabled && (
         <div className="ad-banner"> {/* Platzhalter für Werbung */}
            <AdBanner consentGiven={consent} />
@@ -81,7 +80,7 @@ const scrollToSection = (id) => {
                <AdBanner consentGiven={consent} />
           </div>
   )}    
-    </section>
+    
     
     {adsEnabled && (
     <aside class="ad-sidebar">

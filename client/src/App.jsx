@@ -7,14 +7,11 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Kontakt from './pages/Kontakt';
 import OpenairFocus from './pages/OpenairFocus';
-import HeroSection from './pages/HeroSection';
-import Testimonials from './pages/Testimonials';
 import CypherboxInfos from './pages/CypherboxInfos';
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import CookiesRechlinie from './pages/CoockiesRechlinie';
 import { ScrollProvider } from "./utils/ScrollContext";
-import bild from './assets/hr-logo.png';
 
 
 function App() {
@@ -34,8 +31,6 @@ function App() {
         <Route path="/apps" element={<CypherboxInfos lang={lang} />} />                      
         <Route path="/focus" element={<OpenairFocus  lang={lang} />} />                   
         <Route path="/kontakt" element={<Kontakt />} />                              
-        <Route path="/heroSection" element={<HeroSection lang={lang} title='title text' subtitle='subtitle' ctaText='clarText' onCtaClick={onCtaClick} bgImage={bild}/>} />
-        <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/featuresSection" element={<CypherboxInfos />} />
         <Route path="/impressum" element={<Impressum lang={lang} />} />
         <Route path="/datenschutz" element={<Datenschutz lang={lang} />} />
@@ -43,6 +38,7 @@ function App() {
       </Routes>
       <ScrollToTop />
       <Footer />
+      
     </div>
      </ScrollProvider>
    

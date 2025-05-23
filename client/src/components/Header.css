@@ -25,11 +25,12 @@
   .header {
     position: fixed;
     top: 0;
-  width: 95%;
+    left: 0;
+  width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0rem 3rem;
+    padding: 0rem ;
     color: #fff;
     z-index: 7;
     background-color: rgba(0, 0, 0, 0.01); /* Transparenter beim Öffnen */

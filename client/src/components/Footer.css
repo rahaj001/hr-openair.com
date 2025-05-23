@@ -1,14 +1,20 @@
-.footer {
-  width: 100%;
-    
+   .footer {
+     
+  
+
+    width: 100%;
     text-align: center;
     font-size: 0.9rem;
-    margin: 5px auto 0px auto;
+    margin: 1px auto 0px auto;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    color: #f0f0f0;
   }
   
   .footer-nav {
     display: flex;
     justify-content: center;
+   
     gap: 1rem;
     margin-top: 0.5rem;
   }
