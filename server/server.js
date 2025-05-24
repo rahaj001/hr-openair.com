@@ -12,4 +12,8 @@ app.use(express.json()); // wichtig für JSON body parsing
 
 app.use("/api/contact", contactRoute);
 
+app.get("/", (req, res) => {
+  res.send("Backend läuft!");
+});
+
 app.listen(5000, () => console.log('Server läuft auf http://localhost:5000'));
