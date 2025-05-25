@@ -27,8 +27,8 @@ router.post('/', async (req, res) => {
   const data = captchaResponse.data;
 
    if (!data.success || data.score < 0.5) {
-     return res.status(403).json({ message: "reCAPTCHA-Verifizierung fehlgeschlagen." });
-   }
+  return res.status(403).json({ message: "reCAPTCHA-Verifizierung fehlgeschlagen." });
+}
 
    const transporter = nodemailer.createTransport({
     host:  process.env.SMTP_IONOS_SERVER,
@@ -54,6 +54,7 @@ router.post('/', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Fehler beim Senden' });
+    console.error("Kontaktformular Fehler", err);
   }
 });
 
