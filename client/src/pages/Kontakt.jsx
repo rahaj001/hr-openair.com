@@ -19,14 +19,14 @@ const [errorMessage, setErrorMessage] = useState("");
   const API_URL = import.meta.env.VITE_API_URL;
   const API_KEY_CAPTCHA = import.meta.env.VITE_API_KEY_CAPTCHA;
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-    return () => document.body.removeChild(script);
-  }, []);
+    useEffect(() => {
+      const script = document.createElement("script");
+      script.src = `https://www.google.com/recaptcha/api.js?render=${API_KEY_CAPTCHA}`;
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+      return () => document.body.removeChild(script);
+    }, []);
 
    useEffect(() => {
   const onScroll = () => {
@@ -46,6 +46,41 @@ const [errorMessage, setErrorMessage] = useState("");
       [e.target.name]: e.target.value
     }));
   };
+
+   const handleSubmit = async (e) => {
+     e.preventDefault();
+
+     const token = await window.grecaptcha.execute(API_KEY_CAPTCHA, { action: 'submit' });
+     if (!token) {
+       setStatus("Bitte bestätigen Sie, dass Sie kein Roboter sind.");
+       return;
+     }
+
+     try {
+       const res = await axios.post(`${API_URL}/api/contact`, {
+         ...formData,
+         token,
+       });
+
+       if (res.status === 200) {
+         setSuccessMessage("Nachricht erfolgreich gesendet.");
+         setStatus(res.data.message || "Nachricht erfolgreich gesendet.");
+         setFormData({ name: "", email: "", message: "", token: "" });
+         window.grecaptcha.reset();
+         setSent(true); // ✅ Setze sent auf true nach Erfolg
+         setTimeout(() => {
+           setSent(false);
+         }, 7000); // in 5 Sekunden zurücksetzen
+
+       }
+     } catch (err) {
+       console.error("Fehler beim Senden:", err);
+       setErrorMessage("Es gab ein Problem beim Versenden. Bitte versuchen Sie es erneut.");
+       alert("Fehler beim Senden!");
+     }
+   };
+
+
 
   //const handleChange = e => setData({ ...data, [e.target.name]: e.target.value });
   //const handleSubmit1 = e => { e.preventDefault(); setSent(true); setData({ name: '', email: '', message: '' }); };
@@ -80,41 +115,6 @@ const [errorMessage, setErrorMessage] = useState("");
   };
   */
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const token = window.grecaptcha.getResponse();
-    if (!token) {
-      setStatus("Bitte bestätigen Sie, dass Sie kein Roboter sind.");
-      return;
-    }
-
-    try {
-      const res = await axios.post(`${API_URL}/api/contact`, {
-        ...formData,
-        token,
-      });
-
-      if (res.status === 200) {
-        setSuccessMessage("Nachricht erfolgreich gesendet.");
-           // axios gibt Daten direkt in res.data
-    setStatus(res.data.message || "Nachricht erfolgreich gesendet.");
-    window.grecaptcha.reset(); // reCAPTCHA zurücksetzen
-      console.log("Antwort vom Server:", res.data);
-      setFormData({ name: "", email: "", message: "", token: "" }); // Reset
-    //  setErrorMessage("");
-    //  setSuccessMessage("");
-    //  setStatus("");
-     // alert("Nachricht erfolgreich gesendet!");
-      }
-
-    
-    } catch (err) {
-      console.error("Fehler beim Senden:", err);
-      setErrorMessage("Es gab ein Problem beim Versenden. Bitte versuchen Sie es erneut.");
-      alert("Fehler beim Senden!");
-    }
-  };
 
   return (
     <div className="page">
