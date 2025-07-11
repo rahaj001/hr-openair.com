@@ -8,7 +8,7 @@ const router = express.Router();
 
 // ✅ Erlaube CORS für deine Domain
 app.use(cors({
-  origin: process.env.FRONTEND_URL, // oder '*' nur zu Testzwecken
+  origin: 'https://www.hr-openair.com', // oder '*' nur zu Testzwecken
   methods: ['GET', 'POST'],
   credentials: true
 }));
