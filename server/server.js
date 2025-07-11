@@ -7,7 +7,13 @@ import contactRoute from './routes/contact.js';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+// ✅ Erlaube CORS für deine Domain
+app.use(cors({
+  origin: 'https://www.hr-openair.com', // oder '*' nur zu Testzwecken
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(express.json()); // wichtig für JSON body parsing
 
 app.use("/api/contact", contactRoute);
