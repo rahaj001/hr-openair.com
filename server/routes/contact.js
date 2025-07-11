@@ -10,12 +10,15 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const { name, email, message, token } = req.body;
+  console.log("req body: "req.body);
 
   // 1. reCAPTCHA prüfen
   const secret = process.env.CAPTCHA_SECRET_KEY;
   if (!secret || !token) {
     return res.status(400).json({ message: "Fehlende CAPTCHA-Daten." });
   }
+
+  console.log("data from contact:", name, email, message, token);
 
   try {
     const captchaRes = await axios.post(
@@ -53,7 +56,7 @@ router.post("/", async (req, res) => {
     await transporter.sendMail({
       from: process.env.ADMIN_IONOS_EMAIL,
       to: process.env.ADMIN_IONOS_EMAIL,
-      subject: `Neue Nachricht von ${name}`,
+      subject: `Neue Nachricht über Kontaktformular: ${name}`,
       html: `
         <h3>Neue Nachricht über das Kontaktformular</h3>
         <p><strong>Name:</strong> ${name}</p>
