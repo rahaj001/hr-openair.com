@@ -7,58 +7,59 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   const { name, email, message, token } = req.body;
 
+  if (!token) {
+    return res.status(400).json({ error: "reCAPTCHA Token fehlt" });
+  }
+
   try {
-    // ✅ reCAPTCHA-Überprüfung
-    const secret = process.env.CAPTCHA_SECRET_KEY;
+    // ✅ reCAPTCHA verifizieren
     const captchaResponse = await axios.post(
       "https://www.google.com/recaptcha/api/siteverify",
       new URLSearchParams({
-        secret,
+        secret: process.env.CAPTCHA_SECRET_KEY,
         response: token,
       }),
       {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
       }
     );
 
-    const data = captchaResponse.data;
+    const { success, score } = captchaResponse.data;
 
-    if (!data.success || data.score < 0.5) {
-      return res.status(403).json({ message: "reCAPTCHA-Verifizierung fehlgeschlagen." });
+    if (!success || score < 0.5) {
+      return res.status(403).json({ error: "reCAPTCHA-Verifizierung fehlgeschlagen" });
     }
 
-    // ✅ Mailversand vorbereiten
+    // ✅ Nodemailer konfigurieren
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_IONOS_SERVER,
+      host: process.env.SMTP_IONOS_SERVER,       // z. B. smtp.ionos.de
       port: parseInt(process.env.SMTP_IONOS_PORT || "465"),
-      secure: true,
+      secure: true,                              // Port 465: secure true, Port 587: false
       auth: {
         user: process.env.SMTP_IONOS_USER,
         pass: process.env.SMTP_IONOS_PASS,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
 
-    // ✅ E-Mail senden
     await transporter.sendMail({
       from: process.env.ADMIN_IONOS_EMAIL,
       to: process.env.ADMIN_IONOS_EMAIL,
-      subject: `Neue Nachricht über Kontaktformular: ${message}`,
+      subject: `Neue Nachricht von ${name}`,
       html: `
-        <h3>Neue Kontaktanfrage</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Nachricht:</strong><br>${message}</p>
+        <p><strong>Absender:</strong> ${name} (${email})</p>
+        <p><strong>Nachricht:</strong></p>
+        <p>${message}</p>
       `,
       replyTo: email,
     });
 
-    return res.status(200).json({ message: "Nachricht erfolgreich gesendet." });
-
+    return res.status(200).json({ message: "Nachricht erfolgreich gesendet" });
   } catch (error) {
-    console.error("Fehler beim Senden:", error);
-    return res.status(500).json({ error: "Interner Serverfehler beim Senden der Nachricht." });
+    console.error("❌ Fehler beim Versenden der Nachricht:", error.message);
+    return res.status(500).json({ error: "Serverfehler beim Versenden" });
   }
 });
 
