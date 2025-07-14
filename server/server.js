@@ -1,29 +1,30 @@
 import express from "express";
 import cors from "cors";
-import contactRoute from "./routes/contact.js"; // passe ggf. Pfad an
+import dotenv from "dotenv";
+import contactRoute from "./routes/contact.js";
+
+dotenv.config();
 
 const app = express();
 
-// ✅ CORS-Konfiguration
-const corsOptions = {
+// ✅ CORS korrekt konfigurieren
+app.use(cors({
   origin: "https://www.hr-openair.com",
-  methods: ["GET", "POST", "OPTIONS"],
-  credentials: true,
-};
+  methods: ["POST"],
+}));
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // <-- wichtig für Preflight-Anfragen
+// ✅ JSON-Body korrekt parsen
+app.use(express.json());
 
-app.use(express.json()); // JSON Body Parser
-
-// ✅ API-Routen
+// ✅ Kontakt-Route einbinden
 app.use("/api/contact", contactRoute);
 
-// ✅ Health-Check
 app.get("/", (req, res) => {
-  res.send("Backend läuft!");
+  res.send("HR Openair Backend läuft 🚀");
 });
 
-// ✅ Serverstart
+// ✅ Port (Render verwendet automatisch process.env.PORT)
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server läuft auf http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅ Server läuft auf http://localhost:${PORT}`);
+});
