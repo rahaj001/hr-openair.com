@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import contactRoute from "./routes/contactRoute.js"; // passe ggf. Pfad an
+import contactRoute from "./routes/contact.js"; // passe ggf. Pfad an
 
 const app = express();
 

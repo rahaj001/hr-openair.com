@@ -2,107 +2,37 @@ import express from "express";
 import nodemailer from "nodemailer";
 import axios from "axios";
 
-
 const router = express.Router();
-
-
-
 
 router.post("/", async (req, res) => {
   const { name, email, message, token } = req.body;
-   console.log(token);
-  if (!token) {
-    console.error("❌ Kein reCAPTCHA-Token erhalten");
-    return res.status(400).json({ message: "Kein reCAPTCHA-Token übergeben." });
-  }
 
   try {
+    // ✅ reCAPTCHA-Überprüfung
     const secret = process.env.CAPTCHA_SECRET_KEY;
-    if (!secret) {
-      console.error("❌ CAPTCHA_SECRET_KEY fehlt in env");
-      return res.status(500).json({ message: "Server-Fehler: CAPTCHA key fehlt" });
-    }
-
     const captchaResponse = await axios.post(
-      "https://www.google.com/recaptcha/api/siteverify",
-      new URLSearchParams({ secret, response: token }),
-      {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      }
-    );
-
-    if (!captchaResponse.data.success || captchaResponse.data.score < 0.5) {
-      console.warn("⚠️ reCAPTCHA fehlgeschlagen", captchaResponse.data);
-      return res.status(403).json({ message: "reCAPTCHA-Verifizierung fehlgeschlagen." });
-    }
-
-    // Mail Setup
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_IONOS_SERVER,
-      port: process.env.SMTP_IONOS_PORT,
-      secure: true,
-      auth: {
-        user: process.env.SMTP_IONOS_USER,
-        pass: process.env.SMTP_IONOS_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.ADMIN_IONOS_EMAIL,
-      to: process.env.ADMIN_IONOS_EMAIL,
-      subject: `Neue Nachricht über Kontaktformular`,
-      html: `<p><strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Nachricht:</strong><br>${message}</p>`,
-      replyTo: email,
-    });
-
-    console.log("✅ Nachricht gesendet");
-    return res.status(200).json({ message: "Nachricht erfolgreich gesendet." });
-
-  } catch (err) {
-    console.error("❌ Fehler beim Senden:", err);
-    return res.status(500).json({ message: "Serverfehler beim Versenden." });
-  }
-});
-
-
-/* router.post("/", async (req, res) => {
-  const { name, email, message, token } = req.body;
-  console.log("req body: "req.body);
-
-  // 1. reCAPTCHA prüfen
-  const secret = process.env.CAPTCHA_SECRET_KEY;
-  if (!secret || !token) {
-    return res.status(400).json({ message: "Fehlende CAPTCHA-Daten." });
-  }
-
-  console.log("data from contact:", name, email, message, token);
-
-  try {
-    const captchaRes = await axios.post(
       "https://www.google.com/recaptcha/api/siteverify",
       new URLSearchParams({
         secret,
         response: token,
       }),
       {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
       }
     );
 
-    const { success, score } = captchaRes.data;
-    if (!success || score < 0.5) {
+    const data = captchaResponse.data;
+
+    if (!data.success || data.score < 0.5) {
       return res.status(403).json({ message: "reCAPTCHA-Verifizierung fehlgeschlagen." });
     }
-  } catch (err) {
-    console.error("Fehler bei reCAPTCHA-Überprüfung:", err);
-    return res.status(500).json({ message: "Fehler bei CAPTCHA-Verifikation." });
-  }
 
-  // 2. E-Mail versenden mit Nodemailer
-  try {
+    // ✅ Mailversand vorbereiten
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_IONOS_SERVER,
-      port: Number(process.env.SMTP_IONOS_PORT),
+      port: parseInt(process.env.SMTP_IONOS_PORT || "465"),
       secure: true,
       auth: {
         user: process.env.SMTP_IONOS_USER,
@@ -110,25 +40,26 @@ router.post("/", async (req, res) => {
       },
     });
 
+    // ✅ E-Mail senden
     await transporter.sendMail({
       from: process.env.ADMIN_IONOS_EMAIL,
       to: process.env.ADMIN_IONOS_EMAIL,
-      subject: `Neue Nachricht über Kontaktformular: ${name}`,
+      subject: `Neue Nachricht über Kontaktformular: ${message}`,
       html: `
-        <h3>Neue Nachricht über das Kontaktformular</h3>
+        <h3>Neue Kontaktanfrage</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Nachricht:</strong><br/>${message}</p>
+        <p><strong>Nachricht:</strong><br>${message}</p>
       `,
       replyTo: email,
     });
 
     return res.status(200).json({ message: "Nachricht erfolgreich gesendet." });
-  } catch (err) {
-    console.error("Fehler beim Senden der E-Mail:", err);
-    return res.status(500).json({ message: "E-Mail konnte nicht gesendet werden." });
+
+  } catch (error) {
+    console.error("Fehler beim Senden:", error);
+    return res.status(500).json({ error: "Interner Serverfehler beim Senden der Nachricht." });
   }
 });
-*/
 
 export default router;
