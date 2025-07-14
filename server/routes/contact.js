@@ -10,6 +10,63 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const { name, email, message, token } = req.body;
+   console.log(token);
+  if (!token) {
+    console.error("❌ Kein reCAPTCHA-Token erhalten");
+    return res.status(400).json({ message: "Kein reCAPTCHA-Token übergeben." });
+  }
+
+  try {
+    const secret = process.env.CAPTCHA_SECRET_KEY;
+    if (!secret) {
+      console.error("❌ CAPTCHA_SECRET_KEY fehlt in env");
+      return res.status(500).json({ message: "Server-Fehler: CAPTCHA key fehlt" });
+    }
+
+    const captchaResponse = await axios.post(
+      "https://www.google.com/recaptcha/api/siteverify",
+      new URLSearchParams({ secret, response: token }),
+      {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      }
+    );
+
+    if (!captchaResponse.data.success || captchaResponse.data.score < 0.5) {
+      console.warn("⚠️ reCAPTCHA fehlgeschlagen", captchaResponse.data);
+      return res.status(403).json({ message: "reCAPTCHA-Verifizierung fehlgeschlagen." });
+    }
+
+    // Mail Setup
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_IONOS_SERVER,
+      port: process.env.SMTP_IONOS_PORT,
+      secure: true,
+      auth: {
+        user: process.env.SMTP_IONOS_USER,
+        pass: process.env.SMTP_IONOS_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: process.env.ADMIN_IONOS_EMAIL,
+      to: process.env.ADMIN_IONOS_EMAIL,
+      subject: `Neue Nachricht über Kontaktformular`,
+      html: `<p><strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Nachricht:</strong><br>${message}</p>`,
+      replyTo: email,
+    });
+
+    console.log("✅ Nachricht gesendet");
+    return res.status(200).json({ message: "Nachricht erfolgreich gesendet." });
+
+  } catch (err) {
+    console.error("❌ Fehler beim Senden:", err);
+    return res.status(500).json({ message: "Serverfehler beim Versenden." });
+  }
+});
+
+
+/* router.post("/", async (req, res) => {
+  const { name, email, message, token } = req.body;
   console.log("req body: "req.body);
 
   // 1. reCAPTCHA prüfen
@@ -72,5 +129,6 @@ router.post("/", async (req, res) => {
     return res.status(500).json({ message: "E-Mail konnte nicht gesendet werden." });
   }
 });
+*/
 
 export default router;
