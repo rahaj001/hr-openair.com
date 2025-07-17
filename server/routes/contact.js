@@ -1,11 +1,10 @@
 // import express from "express";
 // import nodemailer from "nodemailer";
 import axios from "axios";
-
-const router = express.Router();
+const nodemailer = require("nodemailer");
 
 const express = require("express");
-const nodemailer = require("nodemailer");
+const router = express.Router();
 
 /*
 router.post("/", async (req, res) => {

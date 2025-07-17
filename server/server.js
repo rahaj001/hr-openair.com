@@ -8,6 +8,7 @@ dotenv.config();
 
 const app = express();
 
+
 // ✅ CORS korrekt konfigurieren
 app.use(cors({
   origin: "https://www.hr-openair.com",
