@@ -120,7 +120,7 @@ const [errorMessage, setErrorMessage] = useState("");
     <div className="page">
       <h1>Kontakt</h1>
       {sent ? <p className="success-message">Danke für deine Nachricht!</p> : (
-        <form ref={form} className="contact-form" onSubmit={handleSubmit}>
+        <form ref={form} className="contact-form" onSubmit={handleSubmit2}>
           <input name="name" value={formData.name} onChange={handleChange} placeholder="Name"  required />
           <input name="email" type="email" value={formData.email} onChange={handleChange}placeholder="Email"   required />
           <textarea
