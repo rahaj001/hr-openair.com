@@ -1,9 +1,47 @@
-import express from "express";
-import nodemailer from "nodemailer";
+// import express from "express";
+// import nodemailer from "nodemailer";
 import axios from "axios";
 
 const router = express.Router();
 
+const express = require("express");
+const nodemailer = require("nodemailer");
+
+router.post("/", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "Bitte alle Felder ausfüllen." });
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.ionos.de",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: process.env.SMTP_IONOS_USER,
+        pass: process.env.SMTP_IONOS_PASS
+      }
+    });
+
+    await transporter.sendMail({
+      from: `"${name}" <${email}>`,
+      to: "info@hr-openair.com", // Zieladresse
+      subject: "Neue Nachricht vom Kontaktformular",
+      text: message
+    });
+
+    res.status(200).json({ message: "E-Mail erfolgreich gesendet." });
+  } catch (error) {
+    console.error("Fehler beim Senden:", error);
+    res.status(500).json({ error: "Fehler beim Senden der E-Mail." });
+  }
+});
+
+
+/*
 router.post("/", async (req, res) => {
   const { name, email, message, token } = req.body;
 
@@ -62,5 +100,7 @@ router.post("/", async (req, res) => {
     return res.status(500).json({ error: "Serverfehler beim Versenden" });
   }
 });
+
+*/
 
 export default router;
