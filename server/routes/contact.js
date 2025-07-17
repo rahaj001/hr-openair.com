@@ -1,9 +1,7 @@
-// import express from "express";
-// import nodemailer from "nodemailer";
+ import express from "express";
+ import nodemailer from "nodemailer";
 import axios from "axios";
-const nodemailer = require("nodemailer");
 
-const express = require("express");
 const router = express.Router();
 
 /*
