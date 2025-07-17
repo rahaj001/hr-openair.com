@@ -7,6 +7,7 @@ const router = express.Router();
 const express = require("express");
 const nodemailer = require("nodemailer");
 
+/*
 router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -38,6 +39,12 @@ router.post("/", async (req, res) => {
     console.error("Fehler beim Senden:", error);
     res.status(500).json({ error: "Fehler beim Senden der E-Mail." });
   }
+});
+*/
+
+router.post("/", async (req, res) => {
+  console.log("Empfangene Anfrage:", req.body);
+  res.status(200).json({ message: "OK – Anfrage angekommen." });
 });
 
 
