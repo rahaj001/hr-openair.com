@@ -6,6 +6,11 @@ const router = express.Router();
 
 /*
 router.post("/", async (req, res) => {
+  console.log("Empfangene Anfrage:", req.body);
+  res.status(200).json({ message: "OK – Anfrage angekommen." });
+});
+
+router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
@@ -40,9 +45,38 @@ router.post("/", async (req, res) => {
 */
 
 router.post("/", async (req, res) => {
-  console.log("Empfangene Anfrage:", req.body);
-  res.status(200).json({ message: "OK – Anfrage angekommen." });
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "Bitte alle Felder ausfüllen." });
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.ionos.de",
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.SMTP_IONOS_USER,
+        pass: process.env.SMTP_IONOS_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: `"${name}" <${email}>`,
+      to: "info@hr-openair.com", // Anpassen!
+      subject: "Neue Nachricht über Kontaktformular",
+      text: `Von: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`,
+    });
+
+    res.status(200).json({ success: true, message: "Nachricht gesendet." });
+  } catch (err) {
+    console.error("E-Mail Fehler:", err);
+    res.status(500).json({ error: "Fehler beim Senden der Nachricht." });
+  }
 });
+
+
 
 
 /*
