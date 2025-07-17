@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-//import dotenv from "dotenv";
-require("dotenv").config();
+import dotenv from "dotenv";
+
 import contactRoute from "./routes/contact.js";
 
 dotenv.config();
