@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
 
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
-      to: "info@hr-openair.com", // Zieladresse
+      to: "support@hr-openair.com", // Zieladresse
       subject: "Neue Nachricht vom Kontaktformular",
       text: message
     });
