@@ -64,7 +64,7 @@ router.post("/", async (req, res) => {
 
     await transporter.sendMail({
       from: `"${name}" <support@hr-openair.com>`,
-      to: "info@hr-openair.com", // Anpassen!
+      to: "support@hr-openair.com", // Anpassen!
       subject: "Neue Nachricht über Kontaktformular",
       text: `Von: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`,
     });
