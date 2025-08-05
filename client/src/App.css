@@ -21,7 +21,7 @@ html, body {
   align-content: center;
 }
 
-.pageCopy {
+.page {
   width: 100%;
   max-width: 80%;
   margin: 10rem auto 7rem auto;
@@ -32,7 +32,7 @@ html, body {
   transition: all 0.3s ease-in-out;
 }
 
-.page {
+.pageCopy {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
