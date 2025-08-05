@@ -183,19 +183,20 @@ html, body {
   gap: 1rem;
   max-width: 700px;
   margin: 0 auto;
+  padding: 1rem; /* Optional: etwas Innenabstand */
+  width: 100%;   /* Optional, wenn Container z. B. in einem Grid ist */
 }
+
 .contact-form input,
 .contact-form textarea {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: box-shadow 0.3s;
+  width: 100%; /* <-- Wichtig! */
+  box-sizing: border-box; /* Verhindert, dass Padding Breite "sprengt" */
 }
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  box-shadow: 0 0 8px rgba(0, 198, 255, 0.7);
-}
+
 .contact-form button {
   background: linear-gradient(90deg, #00C6FF, #0072FF);
   border: none;
