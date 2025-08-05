@@ -21,7 +21,7 @@ html, body {
   align-content: center;
 }
 
-.page {
+.pageCopy {
   width: 100%;
   max-width: 80%;
   margin: 10rem auto 7rem auto;
@@ -31,6 +31,13 @@ html, body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease-in-out;
 }
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
 
 .page-section-home {
   width: 100%;
@@ -182,20 +189,22 @@ html, body {
   flex-direction: column;
   gap: 1rem;
   max-width: 700px;
+  width: 100%; /* ← NEU: volle Breite */
   margin: 0 auto;
-  padding: 1rem; /* Optional: etwas Innenabstand */
-  width: 100%;   /* Optional, wenn Container z. B. in einem Grid ist */
+  padding: 1rem; /* optional für Innenabstand */
 }
+
 
 .contact-form input,
 .contact-form textarea {
+  width: 100%; /* ← NEU: nimmt gesamte Breite ein */
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: box-shadow 0.3s;
-  width: 700px; /* <-- Wichtig! */
-  box-sizing: border-box; /* Verhindert, dass Padding Breite "sprengt" */
+  box-sizing: border-box; /* ← wichtig, damit padding korrekt gerechnet wird */
 }
+
 
 .contact-form button {
   background: linear-gradient(90deg, #00C6FF, #0072FF);
