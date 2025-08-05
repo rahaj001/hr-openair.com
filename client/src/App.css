@@ -32,12 +32,6 @@ html, body {
   transition: all 0.3s ease-in-out;
 }
 
-.pageCopy {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
 
 .page-section-home {
   width: 100%;
