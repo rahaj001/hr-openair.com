@@ -193,7 +193,7 @@ html, body {
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: box-shadow 0.3s;
-  width: 100%; /* <-- Wichtig! */
+  width: 700px; /* <-- Wichtig! */
   box-sizing: border-box; /* Verhindert, dass Padding Breite "sprengt" */
 }
 
