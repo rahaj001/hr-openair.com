@@ -1,6 +1,6 @@
 import React, { useRef , useState , useEffect} from 'react';
 import axios from "axios";
-import { sendEmail } from '../utils/emailService'; // importieren
+
 
 
 export default function Kontakt() {
