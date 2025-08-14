@@ -84,7 +84,7 @@ const [errorMessage, setErrorMessage] = useState("");
 
   //const handleChange = e => setData({ ...data, [e.target.name]: e.target.value });
 
-  const handleSubmit1 = e => {
+ /* const handleSubmit1 = e => {
       e.preventDefault();
        //setSent(true); setData({ name: '', email: '', message: '' });
        await axios.post("https://hr-openair-backend-com.onrender.com/api/contact", {
@@ -94,6 +94,8 @@ const [errorMessage, setErrorMessage] = useState("");
        });
 
       };
+  */
+
 
   const handleSubmit2 = (e) => {
     e.preventDefault();
@@ -112,13 +114,13 @@ const [errorMessage, setErrorMessage] = useState("");
 
   /*const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const res = await fetch('http://localhost:5000/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, message }),
     });
-  
+
     const data = await res.json();
     if (res.ok) alert('Nachricht gesendet!');
     else alert('Fehler: ' + data.error);
@@ -130,7 +132,7 @@ const [errorMessage, setErrorMessage] = useState("");
     <div className="page">
       <h1>Kontakt</h1>
       {sent ? <p className="success-message">Danke für deine Nachricht!</p> : (
-        <form ref={form} className="contact-form" onSubmit={handleSubmit1}>
+        <form ref={form} className="contact-form" onSubmit={handleSubmit}>
           <input name="name" value={formData.name} onChange={handleChange} placeholder="Name"  required />
           <input name="email" type="email" value={formData.email} onChange={handleChange}placeholder="Email"   required />
           <textarea
@@ -140,7 +142,7 @@ const [errorMessage, setErrorMessage] = useState("");
   onChange={handleChange}
   placeholder="Nachricht"
   required
-/>   
+/>
 <div className="g-recaptcha" data-sitekey={API_KEY_CAPTCHA}></div>
        <button type="submit">Senden</button>
         <p>{status}</p>
