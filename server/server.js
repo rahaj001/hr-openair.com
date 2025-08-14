@@ -7,6 +7,7 @@ import contactRoute from "./routes/contact.js";
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 
 // ✅ CORS korrekt konfigurieren
@@ -25,4 +26,4 @@ app.get("/", (req, res) => {
   res.send("Backend läuft!");
 });
 
-app.listen(5000, () => console.log("Server läuft auf http://localhost:5000"));
+app.listen(PORT, () => console.log(`Server läuft auf Port ${PORT}`));
