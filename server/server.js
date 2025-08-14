@@ -1,34 +1,28 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+
 import contactRoute from "./routes/contact.js";
-import path from "path";
-import { fileURLToPath } from "url";
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;  // Port dynamisch setzen
 
-// CORS
+
+// ✅ CORS korrekt konfigurieren
 app.use(cors({
-  origin: [
-    "https://www.hr-openair.com", // Frontend auf Render
-    "http://localhost:5173"       // Frontend lokal
-  ],
+  origin: "https://www.hr-openair..onrender.com",
   methods: ["GET", "POST"],
   credentials: false
 }));
 
 app.use(express.json());
+
+// ✅ Kontakt-Route einbinden
 app.use("/api/contact", contactRoute);
 
-// Frontend ausliefern
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, "../client/dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+app.get("/", (req, res) => {
+  res.send("Backend läuft!");
 });
 
-app.listen(PORT, () => console.log(`Server läuft auf Port ${PORT}`));
+app.listen(5000, () => console.log("Server läuft auf http://localhost:5000"));
