@@ -1,11 +1,33 @@
-// src/utils/emailService.js
-import emailjs from '@emailjs/browser';
+import { createContext, useContext, useEffect, useState } from "react";
 
-export const sendEmail = (formRef) => {
-  return emailjs.sendForm(
-    import.meta.env.VITE_EMAILJS_SERVICE_ID,
-    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-    formRef.current,
-    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+const ScrollContext = createContext();
+
+export const ScrollPr = ({ children }) => {
+  const [scrollDirection, setScrollDirection] = useState("up");
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const updateScrollDirection = () => {
+      const currentScrollY = window.scrollY;
+     
+
+      if (Math.abs(currentScrollY - lastScrollY) > 100) {
+        setScrollDirection(currentScrollY > lastScrollY ? "down" : "up");
+        lastScrollY = currentScrollY > 0 ? currentScrollY : 0;
+      }
+    };
+
+    window.addEventListener("scroll", updateScrollDirection);
+    return () => window.removeEventListener("scroll", updateScrollDirection);
+  }, []);
+
+  return (
+    <ScrollContext.Provider value={scrollDirection}>
+      {children}
+    </ScrollContext.Provider>
   );
 };
+
+// Custom Hook zum einfachen Zugriff
+export const useScrollDirection = () => useContext(ScrollContext);
