@@ -84,16 +84,7 @@ const [errorMessage, setErrorMessage] = useState("");
 
   //const handleChange = e => setData({ ...data, [e.target.name]: e.target.value });
 
-  const handleSubmit1 = e => {
-      e.preventDefault();
-       //setSent(true); setData({ name: '', email: '', message: '' });
-       await axios.post("https://hr-openair-backend-com.onrender.com/api/contact", {
-         name: "Max Muster",
-         email: "max@muster.de",
-         message: "Hallo, bitte kontaktieren Sie mich."
-       });
 
-      };
   
 
 
