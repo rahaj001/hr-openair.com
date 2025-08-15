@@ -5,9 +5,9 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import Kontakt from './pages/Kontakt';   <Route path="/kontakt" element={<Kontakt />} />
+import Kontakt from './pages/Kontakt';  
 import OpenairFocus from './pages/OpenairFocus';
-import CypherboxInfos from './pages/CypherboxInfos';    <Route path="/apps" element={<CypherboxInfos lang={lang} />} />
+import CypherboxInfos from './pages/CypherboxInfos';   
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import CookiesRechlinie from './pages/CoockiesRechlinie';
@@ -18,7 +18,7 @@ function App() {
   const { lang } = useContext(LanguageContext);
   
   const onCtaClick = () => {
-    //alert("Test Nachricht ......!");
+    alert("Test Nachricht ......!");
   };
 
   return (
@@ -30,8 +30,8 @@ function App() {
         <Route path="/" element={<Home />} />                                 
 
         <Route path="/focus" element={<OpenairFocus  lang={lang} />} />                   
-
-
+          <Route path="/apps" element={<CypherboxInfos lang={lang} />} />
+        <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/impressum" element={<Impressum lang={lang} />} />
         <Route path="/datenschutz" element={<Datenschutz lang={lang} />} />
         <Route path="/cookiesRechlinie" element={<CookiesRechlinie lang={lang} />} />
