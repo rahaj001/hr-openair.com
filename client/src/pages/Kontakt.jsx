@@ -84,7 +84,7 @@ const [errorMessage, setErrorMessage] = useState("");
 
   //const handleChange = e => setData({ ...data, [e.target.name]: e.target.value });
 
- /* const handleSubmit1 = e => {
+  const handleSubmit1 = e => {
       e.preventDefault();
        //setSent(true); setData({ name: '', email: '', message: '' });
        await axios.post("https://hr-openair-backend-com.onrender.com/api/contact", {
@@ -94,7 +94,7 @@ const [errorMessage, setErrorMessage] = useState("");
        });
 
       };
-  */
+  
 
 
   const handleSubmit2 = (e) => {
@@ -132,7 +132,7 @@ const [errorMessage, setErrorMessage] = useState("");
     <div className="page">
       <h1>Kontakt</h1>
       {sent ? <p className="success-message">Danke für deine Nachricht!</p> : (
-        <form ref={form} className="contact-form" onSubmit={handleSubmit2}>
+        <form ref={form} className="contact-form" onSubmit={handleSubmit1}>
           <input name="name" value={formData.name} onChange={handleChange} placeholder="Name"  required />
           <input name="email" type="email" value={formData.email} onChange={handleChange}placeholder="Email"   required />
           <textarea
