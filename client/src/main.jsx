@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
     <LanguageProvider>
-      <App />
+        <App />
       </LanguageProvider>
     </BrowserRouter>
   </React.StrictMode>

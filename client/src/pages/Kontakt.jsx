@@ -1,7 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
+<<<<<<< HEAD
 import "./KontakForm.css";
 
+=======
+>>>>>>> 17e136cdc4d96e4216d8c0b1b21357339efa771d
 
 export default function Kontakt() {
   const form = useRef();
@@ -73,7 +76,11 @@ export default function Kontakt() {
       {sent ? (
         <p className="success-message">Danke für deine Nachricht!</p>
       ) : (
+<<<<<<< HEAD
         <form ref={form} className="contact-form-neu" onSubmit={handleSubmit}>
+=======
+        <form ref={form} className="contact-form" onSubmit={handleSubmit}>
+>>>>>>> 17e136cdc4d96e4216d8c0b1b21357339efa771d
           <input
             name="name"
             value={formData.name}
