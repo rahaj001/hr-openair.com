@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Kontakt from './pages/Kontakt';
 import OpenairFocus from './pages/OpenairFocus';
+import AppsPage from './pages/AppsPage';
 import CypherboxInfos from './pages/CypherboxInfos';
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
@@ -18,7 +19,7 @@ function App() {
   const { lang } = useContext(LanguageContext);
   
   const onCtaClick = () => {
-    alert("Test Nachricht ......!");
+    //alert("Test Nachricht ......!");
   };
 
   return (
@@ -28,10 +29,10 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />                                 
-        <Route path="/apps" element={<CypherboxInfos lang={lang} />} />                      
+
         <Route path="/focus" element={<OpenairFocus  lang={lang} />} />                   
-        <Route path="/kontakt" element={<Kontakt />} />                              
-        <Route path="/featuresSection" element={<CypherboxInfos />} />
+          <Route path="/kontakt" element={<Kontakt />} />
+         <Route path="/apps" element={<AppsPage lang={lang} />} />
         <Route path="/impressum" element={<Impressum lang={lang} />} />
         <Route path="/datenschutz" element={<Datenschutz lang={lang} />} />
         <Route path="/cookiesRechlinie" element={<CookiesRechlinie lang={lang} />} />

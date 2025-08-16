@@ -11,7 +11,7 @@ const app = express();
 
 // ✅ CORS korrekt konfigurieren
 app.use(cors({
-  origin: "https://www.hr-openair.com",
+  origin: "https://www.hr-openair..onrender.com",
   methods: ["GET", "POST"],
   credentials: false
 }));
@@ -26,25 +26,3 @@ app.get("/", (req, res) => {
 });
 
 app.listen(5000, () => console.log("Server läuft auf http://localhost:5000"));
-/*
-app.use(cors({
-  origin: "https://www.hr-openair.com",
-  methods: ["POST"],
-}));
-
-// ✅ JSON-Body korrekt parsen
-app.use(express.json());
-
-// ✅ Kontakt-Route einbinden
-app.use("/api/contact", contactRoute);
-
-app.get("/", (req, res) => {
-  res.send("HR Openair Backend läuft 🚀");
-});
-
-// ✅ Port (Render verwendet automatisch process.env.PORT)
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server läuft auf http://localhost:${PORT}`);
-});
-*/
