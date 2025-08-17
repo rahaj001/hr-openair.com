@@ -46,10 +46,11 @@ export default function Kontakt() {
     setErrorMessage("");
 
     try {
-      if (!window.grecaptcha) {
+     /* if (!window.grecaptcha) {
         setErrorMessage("Captcha konnte nicht geladen werden.");
         return;
       }
+  */
 
       // ✅ Token vom reCAPTCHA holen
       const token = await window.grecaptcha.execute(API_KEY_CAPTCHA, {
