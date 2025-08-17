@@ -36,7 +36,6 @@ function CypherboxInfos({ lang }) {
       
 
         <FoldSection title="Shortscreen Apps"
-             content="Wir bieten maßgeschneiderte Lösungen für mobile Plattformen – Android, iOS & Cross-Plattform."
           >
             <Gallery />
             </FoldSection>

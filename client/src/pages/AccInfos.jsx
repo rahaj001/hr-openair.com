@@ -3,12 +3,13 @@ import ExpandableSection from "../components/ExpandableSection";
 import FoldSection from "../components/FoldSection";
 import acc from '../assets/acc-logo.png' ;
 //import { useScrollDirection } from "../utils/ScrollContext";
-import ShortGallery from '../components/gallery/ShortGallery';
-import GalleryModal from "../components/gallery/GalleryModal";
+// import ShortGallery from '../components/gallery/ShortGallery';
+// import GalleryModal from "../components/gallery/GalleryModal";
 
 import './CypherboxInfos.css';
 import { useEffect } from "react";
-import Gallery from "../components/gallery/Gallery";
+// import Gallery from "../components/gallery/Gallery";
+import GlobGallery from "../components/gallery/GlobGallery";
 
 function AccInfos({ lang }) {
       const t = accInfoTexts[lang];
@@ -36,9 +37,9 @@ function AccInfos({ lang }) {
       
 
         <FoldSection title="Shortscreen Apps"
-             content="Wir bieten maßgeschneiderte Lösungen für mobile Plattformen – Android, iOS & Cross-Plattform."
+
           >
-            <Gallery />
+            <GlobGallery />
             </FoldSection>
 
 

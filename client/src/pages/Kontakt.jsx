@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./KontakForm.css";
 
-
 export default function Kontakt() {
   const [formData, setFormData] = useState({
     name: "",
@@ -70,7 +69,7 @@ export default function Kontakt() {
   return (
     <div className="page">
       <h1>Kontakt</h1>
-      <form className="contact-form-neu" onSubmit={handleSubmit}>
+      <form className="contact-form" onSubmit={handleSubmit}>
         <input
           name="name"
           value={formData.name}
