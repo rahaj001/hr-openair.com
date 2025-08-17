@@ -39,11 +39,11 @@ Deine Daten verlassen niemals dein Gerät.
     title: "ACC-clean Manage projects, clients, credits & budgets .. -in 4 language AR, DE, FR & EN-– no subscription, all for unique buying",
     usageTitle: `🧭 Using CypherBox `,
 
-usage: `CypherBox is a secure app for storing sensitive data like usernames, passwords, and PINs locally on your device. All data is encrypted and never exposed to other apps or networks.`,
+usage: `ACC-clean -in AR, DE, FR & EN language-  The ideal solution for contractors, architects, warehouse & shop owners, and private users who want to manage projects, finances, and client data in one place.`,
 
     features: `🛡️ Key Features:
 
-• End-to-end local encryption of all login data  
+• 📋 Project & Client Management
 • Save usernames, passwords, and PINs in structured form  
 • History log for every login update or change  
 • Secure the app with a master password  
