@@ -12,7 +12,7 @@ export default function Kontakt() {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const API_URL = import.meta.env.VITE_API_URL; // z.B. https://hr-openair-backend-com.onrender.com
+  const API_URL = import.meta.env.VITE_API_URL; // z.B. http://localhost:5000
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -26,19 +26,17 @@ export default function Kontakt() {
     setStatus("Sende...");
 
     try {
-      // Einfach direkt an Backend senden, ohne Captcha
       const res = await axios.post(`${API_URL}/api/contact`, formData);
 
       if (res.status === 200) {
-        setSuccessMessage("Nachricht erfolgreich gesendet!");
-        setStatus("");
+        setSuccessMessage(res.data.message);
+        setErrorMessage("");
         setFormData({ name: "", email: "", message: "" });
       }
+      setStatus("");
     } catch (err) {
       console.error("Fehler beim Kontaktformular:", err);
-      setErrorMessage(
-        err.response?.data?.message || "Fehler beim Senden der Nachricht."
-      );
+      setErrorMessage(err.response?.data?.message || "Fehler beim Senden der Nachricht.");
       setStatus("");
     }
   };
