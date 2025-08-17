@@ -1,36 +1,27 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
-import contactRoute from "./routes/contact.js";
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ CORS für Frontend + lokal
-const allowedOrigins = [
-  process.env.FRONTEND_URL,
-  "http://localhost:5173"
-];
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Nicht erlaubter Origin: " + origin));
-    }
-  },
-  methods: ["GET","POST"],
-  credentials: true
-}));
-
+app.use(cors());
 app.use(express.json());
-app.use("/api/contact", contactRoute);
 
-app.get("/", (req, res) => {
-  res.send("Backend läuft!");
+// Kontakt-Route ohne Captcha
+app.post("/api/contact", (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: "Alle Felder sind erforderlich." });
+  }
+
+  // Test: Nachricht protokollieren
+  console.log("Kontaktformular empfangen:", { name, email, message });
+
+  // Simuliere erfolgreichen Versand
+  res.status(200).json({ message: "Nachricht erfolgreich gesendet (Test ohne Captcha)" });
 });
 
-app.listen(PORT, () => console.log(`Server läuft auf Port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server läuft auf Port ${PORT}`);
+});
