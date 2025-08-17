@@ -1,3 +1,11 @@
+.kontakt-container-neu {
+  display: flex;
+  justify-content: center;  /* zentriert horizontal */
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  margin-top: 50px;
+}
 .contact-form-neu {
   display: flex;
   flex-direction: column;
@@ -8,6 +16,7 @@
   border-radius: 12px;
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 850px;
 }
 
 .contact-form-neu input,
@@ -17,6 +26,10 @@
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.2s ease;
+}
+
+.contact-form-neu textarea {
+   height: 200px;
 }
 
 .contact-form-neu input:focus,

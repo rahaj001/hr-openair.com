@@ -30,6 +30,7 @@ function App() {
         <Route path="/" element={<Home />} />                                 
          <Route path="/apps" element={<AppsPage  lang={lang} />} />
         <Route path="/focus" element={<OpenairFocus  lang={lang} />} />
+         <Route path="/kontakt" element={<Kontakt />} />   {/* ✅ wichtig */}
         <Route path="/impressum" element={<Impressum lang={lang} />} />
         <Route path="/datenschutz" element={<Datenschutz lang={lang} />} />
         <Route path="/cookiesRechlinie" element={<CookiesRechlinie lang={lang} />} />
