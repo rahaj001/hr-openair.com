@@ -3,19 +3,19 @@ import cors from "cors";
 import nodemailer from "nodemailer";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT =  5000;
 
 app.use(cors());
 app.use(express.json());
 
 // ⚡ Mail-Transporter konfigurieren
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,      // z.B. smtp.gmail.com
-  port: process.env.SMTP_PORT || 587,
+  host: process.env.SMTP_IONOS_SERVER,      // z.B. smtp.gmail.com
+  port: process.env.SMTP_IONOS_PORT || 587,
   secure: false,                     // true für 465, false für andere Ports
   auth: {
-    user: process.env.SMTP_USER,     // deine E-Mail-Adresse
-    pass: process.env.SMTP_PASS,     // dein E-Mail-Passwort oder App-Passwort
+    user: process.env.SMTP_IONOS_USER,     // deine E-Mail-Adresse
+    pass: process.env.SMTP_IONOS_PASS,     // dein E-Mail-Passwort oder App-Passwort
   },
 });
 
@@ -30,7 +30,7 @@ app.post("/api/contact", async (req, res) => {
     // ⚡ Mail senden
    await transporter.sendMail({
      from: `"HR OpenAir Kontaktformular" <kontakt@hr-openair.com>`, // fester Absender
-     to: process.env.CONTACT_RECEIVER,                             // Empfänger
+     to: process.env.ADMIN_IONOS_EMAIL,                             // Empfänger
      subject: `Neue Nachricht von ${name}`,
      text: `Von: ${name} <${email}>\n\n${message}`,               // Nutzer-Email im Text
      html: `<p>${message}</p><p>Von: ${name} &lt;${email}&gt;</p>`,
