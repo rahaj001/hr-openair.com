@@ -39,48 +39,45 @@ export default function Kontakt() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("⏳ Nachricht wird gesendet...");
-    setSuccessMessage("");
-    setErrorMessage("");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setStatus("Sende...");
 
-    try {
-     /* if (!window.grecaptcha) {
-        setErrorMessage("Captcha konnte nicht geladen werden.");
-        return;
-      }
-  */
+  if (!window.grecaptcha) {
+    setErrorMessage("Captcha konnte nicht geladen werden.");
+    setStatus("");
+    return;
+  }
 
-      // ✅ Token vom reCAPTCHA holen
-      const token = await window.grecaptcha.execute(API_KEY_CAPTCHA, {
-        action: "submit",
-      });
+  try {
+    window.grecaptcha.ready(async () => {
+      const token = await window.grecaptcha.execute(API_KEY_CAPTCHA, { action: "submit" });
 
       if (!token) {
-        setErrorMessage("⚠️ Captcha fehlgeschlagen.");
+        setErrorMessage("Captcha fehlgeschlagen.");
+        setStatus("");
         return;
       }
 
-      // ✅ Daten + Token an Backend senden
+      // Daten an Backend senden
       const res = await axios.post(`${API_URL}/api/contact`, {
         ...formData,
         token,
       });
 
       if (res.status === 200) {
-        setSuccessMessage("✅ Nachricht erfolgreich gesendet!");
+        setSuccessMessage("Nachricht erfolgreich gesendet!");
+        setStatus("");
         setFormData({ name: "", email: "", message: "" });
       }
-    } catch (err) {
-      console.error("Fehler beim Kontaktformular:", err);
-      setErrorMessage(
-        err.response?.data?.message || "❌ Fehler beim Senden der Nachricht."
-      );
-    } finally {
-      setStatus("");
-    }
-  };
+    });
+  } catch (err) {
+    console.error("Fehler beim Kontaktformular:", err);
+    setErrorMessage(err.response?.data?.message || "Fehler beim Senden der Nachricht.");
+    setStatus("");
+  }
+};
+
 
   return (
     <div className="kontakt-container-neu">
