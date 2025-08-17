@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./KontakForm.css";
 
@@ -12,25 +12,7 @@ export default function Kontakt() {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const API_URL = import.meta.env.VITE_API_URL; // z.B. https://dein-backend.com
-  const API_KEY_CAPTCHA = import.meta.env.VITE_API_KEY_CAPTCHA; // dein reCAPTCHA SITE KEY (NICHT Secret!)
-
-  // ✅ reCAPTCHA Script laden
-  useEffect(() => {
-    if (!API_KEY_CAPTCHA) {
-      console.error("⚠️ Kein reCAPTCHA Site-Key gefunden!");
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${API_KEY_CAPTCHA}`;
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, [API_KEY_CAPTCHA]);
+  const API_URL = import.meta.env.VITE_API_URL; // z.B. https://hr-openair-backend-com.onrender.com
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -39,45 +21,27 @@ export default function Kontakt() {
     }));
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setStatus("Sende...");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sende...");
 
-  if (!window.grecaptcha) {
-    setErrorMessage("Captcha konnte nicht geladen werden.");
-    setStatus("");
-    return;
-  }
-
-  try {
-    window.grecaptcha.ready(async () => {
-      const token = await window.grecaptcha.execute(API_KEY_CAPTCHA, { action: "submit" });
-
-      if (!token) {
-        setErrorMessage("Captcha fehlgeschlagen.");
-        setStatus("");
-        return;
-      }
-
-      // Daten an Backend senden
-      const res = await axios.post(`${API_URL}/api/contact`, {
-        ...formData,
-        token,
-      });
+    try {
+      // Einfach direkt an Backend senden, ohne Captcha
+      const res = await axios.post(`${API_URL}/api/contact`, formData);
 
       if (res.status === 200) {
         setSuccessMessage("Nachricht erfolgreich gesendet!");
         setStatus("");
         setFormData({ name: "", email: "", message: "" });
       }
-    });
-  } catch (err) {
-    console.error("Fehler beim Kontaktformular:", err);
-    setErrorMessage(err.response?.data?.message || "Fehler beim Senden der Nachricht.");
-    setStatus("");
-  }
-};
-
+    } catch (err) {
+      console.error("Fehler beim Kontaktformular:", err);
+      setErrorMessage(
+        err.response?.data?.message || "Fehler beim Senden der Nachricht."
+      );
+      setStatus("");
+    }
+  };
 
   return (
     <div className="kontakt-container-neu">
@@ -106,7 +70,6 @@ const handleSubmit = async (e) => {
           placeholder="Nachricht"
           required
         />
-        {/* Kein sichtbares Captcha, reCAPTCHA v3 arbeitet "invisible" */}
         <button type="submit">Senden</button>
       </form>
 
