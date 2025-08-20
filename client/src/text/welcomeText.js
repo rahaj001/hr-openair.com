@@ -1,19 +1,19 @@
 const welcomeTexts = {
     de: {
-        text1: `´brauchst du eine webseite, melde dich einfach`,
-        text2: `denkst du an app oder software, wir realisieren konzept-Idee zum gewünschten App`,
+        text1: `´Wir erstellen für Sie moderne Webseiten und Store-Apps mit modern Techniken wie React und vieles ..`,
+        text2: `Unsere Apps & Software realisieren konzept-Idee zum digital Raum`,
     },
     en: {
-        text1: `Do you need a website, just contact me`,
-        text2: `Do you think of app or software, we realize concept-idea to the desired app`,
+        text1: `We create modern websites and store apps for you using modern technologies such as React and much more`,
+        text2: `Our apps & software realize concept ideas for the digital space`,
     },
     fr: {
-        text1: `Avez-vous besoin d'un site Web, contactez-moi`,
-        text2: `Vous pensez à une application ou un logiciel? Nous réaliserons l'idée conceptuelle à l'application souhaitée.`,
+        text1: `Nous créons des sites Web modernes et stockons des applications pour vous en utilisant des technologies modernes telles que React et bien plus encore.`,
+        text2: `Nos applications et logiciels réalisent des idées conceptuelles pour l espace numérique.`,
     },
     ar: {
-        text1: `هل تحتاج إلى موقع ويب، فقط اتصل بي`,
-        text2: `هل تفكر في تطبيق أو سفتوار ؟ سنقوم بتنفيذ فكرة المحتوى إلى التطبيق المطلوب.`,
+        text1: `نحن نقوم بإنشاء مواقع ويب حديثة وتخزين التطبيقات لك باستخدام التقنيات الحديثة مثل React وأكثر من ذلك بكثير.`,
+        text2: `تعمل تطبيقاتنا وبرامجنا على تحقيق أفكار مفاهيمية للمساحة الرقمية.`,
     }
     
 }

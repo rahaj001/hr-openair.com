@@ -3,7 +3,7 @@ const accInfoTexts = {
     blick: 'überblick',
     funktion: 'Funktionen',
     recht: 'Rechtliches',
-    title: "ACC-clean Verwaltet einfach Projekte, Kunden, Kredite & Budgets .. -in 4 Sprachen AR, DE, FR & EN – ohne Abo, alles für einmaligen Kauf.",
+    title: "ACC-clean Verwaltet einfach Projekte, Kunden, Kredite & Budgets .. -in 4 Sprachen..",
     usageTitle: `🧭 Über die Nutzung der App – ACC-clean `,
 
 usage: `ACC-clean ist eine sichere App zur lokalen Speicherung sensibler persönlicher Daten wie Benutzernamen, Passwörter, PINs und Anmeldedaten für verschiedene Dienste. Alle Informationen werden lokal auf Ihrem Gerät verschlüsselt gespeichert und sind nicht für andere Apps oder Nutzer zugänglich.`,
@@ -36,7 +36,7 @@ Deine Daten verlassen niemals dein Gerät.
      blick: 'overview',
     funktion: 'Funkfunctionstionen',
     recht: 'legal',
-    title: "ACC-clean Manage projects, clients, credits & budgets .. -in 4 language AR, DE, FR & EN-– no subscription, all for unique buying",
+    title: "ACC-clean Manage projects, clients, credits & budgets .. -in 4 language ..",
     usageTitle: `🧭 Using CypherBox `,
 
 usage: `ACC-clean -in AR, DE, FR & EN language-  The ideal solution for contractors, architects, warehouse & shop owners, and private users who want to manage projects, finances, and client data in one place.`,
@@ -67,7 +67,7 @@ Your data never leaves your device.
      blick: 'نظرة عامة',
     funktion: 'الوظيفة',
     recht: 'حقوقي',
-    title: "إدارة المشاريع والعملاء والميزانية سلف نقدي .. بسهولة – بدون اشتراك، الكل مقابل تمن  واحد. - ACC-clean – ",
+    title: "إدارة المشاريع والعملاء والميزانية سلف نقدي .. بسهولة – في أربع لغات... - ACC-clean – ",
     usageTitle: `🧭 استخدام تطبيق CypherBox `,
   usage: `  يتيح لك تطبيق CypherBox حفظ بياناتك الحساسة مثل أسماء المستخدمين وكلمات المرور والرموز السرية محليًا وبشكل مشفر داخل هاتفك. البيانات لا تتم مشاركتها مع أي جهة خارجية.`,
 
@@ -94,7 +94,7 @@ Your data never leaves your device.
   },
 
   fr: {
-    title: "ACC-clean Gérez projets, clients, credits & budgets.. facilement -en 4 lngues AR, DE, FR & EN – sans abonnement, pour un seul prix.",
+    title: "ACC-clean Gérez projets, clients, credits & budgets.. facilement -en 4 lngues ..",
     usageTitle: `🧭 Utilisation de CypherBox'`,
 
     usage: `CypherBox est une application sécurisée qui vous permet de stocker localement vos informations sensibles telles que les identifiants, mots de passe et codes PIN. Les données sont cryptées localement sur votre appareil.`,
