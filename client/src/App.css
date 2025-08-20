@@ -24,7 +24,7 @@ html, body {
 .page {
   width: 100%;
 
-  margin: 10rem auto 7rem auto;
+  margin-bottom: 10rem;
   padding: 2rem auto;
   background-color: #ffffff;
   border-radius: 12px;
@@ -217,6 +217,10 @@ html, body {
 @media (max-width: 768px) {
   .burger {
     display: flex;
+  }
+
+  .page {
+  margin-bottom: 10rem;
   }
 
   .features-grid {
